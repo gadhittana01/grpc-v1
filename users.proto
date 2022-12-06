@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package users;
+
+import "google/protobuf/Empty.proto";
+
+option go_package = "github.com/gadhittana01/grpc-v1/users";
+
+service UsersService{
+    rpc CreateUser(CreateUserReq) returns (CreateUserRes){}    
+    rpc GetUsers(google.protobuf.Empty) returns (GetUsersRes){}
+}
+
+message CreateUserReq{
+    string name = 1;
+    int32 age = 2;
+}
+
+message CreateUserRes {
+    User user = 1;
+}
+
+message GetUsersRes {
+    Users users = 1;
+}
+
+message User{
+    int32 id = 1;
+    string name = 2;
+    int32 age = 3;
+}
+
+message Users{
+    repeated User users = 1;    
+}
